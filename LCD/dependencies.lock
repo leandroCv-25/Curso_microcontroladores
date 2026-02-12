@@ -1,0 +1,16 @@
+dependencies:
+  LiquidCrystal:
+    component_hash: 304d4e5df039c10985efae14c85460878ace9e472f65643a8838af924645764a
+    source:
+      git: git@github.com:leandroCv-25/LiquidCrystal.git
+      path: .
+      type: git
+    version: fc2041645b9abb53fcb363ab60463b493b8b3b63
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.0.2
+manifest_hash: 6726edb3691cf38c4600dbc3eef7f09dc37f665d5e9163a5627e6a39d53ed5fc
+target: esp32
+version: 1.0.0

@@ -1,0 +1,3 @@
+dependencies:
+  LiquidCrystal: 
+    git: git@github.com:leandroCv-25/LiquidCrystal.git
