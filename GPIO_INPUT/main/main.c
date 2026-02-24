@@ -5,24 +5,26 @@
 
 #include "driver/gpio.h"
 
-#define cButton 4
+const gpio_num_t cButton = GPIO_NUM_4;
 
 void app_main(void)
 {
 
-	// Configura o pino como GPIO
 	esp_rom_gpio_pad_select_gpio(cButton);
-	// Configura o GPIO como saída INPUT
 	gpio_set_direction(cButton, GPIO_MODE_INPUT);
+	// gpio_set_pull_mode(cButton, GPIO_PULLUP_ONLY);
+	// gopio_set_pull_mode(cButton, GPIO_PULLDOWN_ONLY);
 
-	//Cria variável que armazena o tempo da ultima mudança
+	// Criamos uma variável que armazena o tempo da ultima mudança
 	unsigned long lastDebounceTime = 0;
-	//Cria variável que armazena o ultimo estado
+	// Cria variável que armazena o ultimo estado
 	int lastState = 0;
-	while (true)
+
+	while (1)
 	{
 		// get o nível da entrada
 		int reading = gpio_get_level(cButton);
+
 		// Compara se o lastState é diferente do estado que está lendo, se houve mudança
 		if (reading != lastState)
 		{
@@ -45,6 +47,5 @@ void app_main(void)
 
 		// delay de 50 ms o microcontrolador fica em estado idle se não tiver outra task em andamento
 		vTaskDelay(pdMS_TO_TICKS(50));
-		// seta como nível 0 ou LOW a saída
 	}
 }
