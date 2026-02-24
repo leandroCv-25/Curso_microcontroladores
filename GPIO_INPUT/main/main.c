@@ -3,6 +3,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+#include "esp_timer.h"
+
 #include "driver/gpio.h"
 
 const gpio_num_t cButton = GPIO_NUM_4;
@@ -29,16 +31,17 @@ void app_main(void)
 		if (reading != lastState)
 		{
 			// Mensagem de LOG para depurar o sistema
-			ESP_LOGI("Botao", "Opa, algo mudou");
+			printf("Opa, algo mudou");
 
 			// Atribuindo lastDebounceTime com o tempo da ultima mudança
 			lastDebounceTime = esp_timer_get_time();
 		}
 
-		if (((esp_timer_get_time() - lastDebounceTime) > 4000000) && reading)
+		// Verificando se o tempo da última mudança foi maior que 50 ms e se o estado é HIGH
+		if (((esp_timer_get_time() - lastDebounceTime) > 50000) && reading)
 		{
 			// Mensagem de LOG para depurar o sistema
-			ESP_LOGI("Botao", "Apertou o suficiente");
+			printf("Apertou o suficiente");
 			lastDebounceTime = esp_timer_get_time();
 		}
 
