@@ -31,7 +31,7 @@ void app_main(void)
     // Configuração de leitura do ADC
     adc_oneshot_chan_cfg_t config = {
         .bitwidth = ADC_BITWIDTH_12, // Resolução
-        .atten = ADC_ATTEN_DB_11,    // Atenuador -> define o faixa de tensão que podemos ler 0 a 3,3V no caso, existe outras opções
+        .atten = ADC_ATTEN_DB_12,    // Atenuador -> define o faixa de tensão que podemos ler 0 a 3,3V no caso, existe outras opções
     };
 
     // Configura um pino para a leitura no caso o canal 2 adc da unidade 1
@@ -40,7 +40,7 @@ void app_main(void)
     // Calibração
     adc_cali_handle_t adc1_calibration_channel_2_handle = NULL;
 
-    bool channel2IsCalibrated = adc_calibration_init(ADC_UNIT_1, ADC_CHANNEL_0, ADC_ATTEN_DB_11, &adc1_calibration_channel_2_handle);
+    bool channel2IsCalibrated = adc_calibration_init(ADC_UNIT_1, ADC_CHANNEL_0, ADC_ATTEN_DB_12, &adc1_calibration_channel_2_handle);
 
     //Variáveis de leitura
     int adc_raw;
