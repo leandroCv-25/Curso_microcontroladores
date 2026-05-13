@@ -17,8 +17,8 @@ void app_main(void)
 
     uint8_t value = 0;
     while (1) {
-        /* Set the voltage every 100 ms */
-        ESP_ERROR_CHECK(dac_oneshot_output_voltage(chan0_handle, value));
+        /* Definindo o valor da tensão */
+        dac_oneshot_output_voltage(chan0_handle, value);
         value += 10;
         value %= 250;
         vTaskDelay(pdMS_TO_TICKS(500));
